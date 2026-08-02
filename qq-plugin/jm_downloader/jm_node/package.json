@@ -1,9 +1,0 @@
-{
-  "name": "jm-downloader-bridge",
-  "version": "1.0.0",
-  "private": true,
-  "type": "module",
-  "dependencies": {
-    "jm_node": "1.0.4"
-  }
-}
