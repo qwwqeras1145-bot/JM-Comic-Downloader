@@ -1,0 +1,7 @@
+name: jm_downloader
+icon: https://raw.githubusercontent.com/qwwqeras1145-bot/jmqq-download-bot/main/assets/avatar.png
+display_name: jm_downloader
+desc: 禁漫天堂(JMComic)漫画下载插件，基于 AstrBot 4.x 的一站式漫画工具。双引擎架构：jmcomic-Python 负责查询/搜索/排行榜，jm_node-Node.js 负责高速下载。支持漫画信息查询（标题/作者/页数/标签）、多关键词搜索（自动合并）、日榜/周榜/月榜排行榜、双引擎并发下载（并发数可调）。下载完成后自动 AES-256 加密打包并单独发送解压密码，保护内容隐私。基于正则过滤器设计，群聊无需唤醒词直接使用，AI 不抢答；查询失败自动切换另一引擎降级重试。完整指令：/jm 帮助；/jm 漫画码 查询信息；/jm dl 漫画码 [并发] node引擎下载；/jm dlj 漫画码 [并发] jmcomic引擎下载；/jm search 关键词 [页码] 搜索；/jm top [日榜|周榜|月榜] [页码] 排行榜；/jm version 版本信息。作者：小鱼儿。English: JMComic manga downloader plugin for AstrBot 4.x. Dual engines (jmcomic-Python for query/search/ranking + jm_node-Node.js for high-speed download). Features manga info query, multi-keyword search, daily/weekly/monthly rankings, and dual-engine download with adjustable concurrency. Downloads are auto AES-256 encrypted with a separate extraction password. No wake word needed in group chats. Commands: /jm, /jm code, /jm dl code [concurrency], /jm dlj code [concurrency], /jm search keyword [page], /jm top [daily|weekly|monthly] [page], /jm version. Author: 小鱼儿
+version: v2.0.3
+author: 小鱼儿
+repo: https://github.com/hect0x7/JMComic-Crawler-Python
