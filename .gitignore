@@ -1,0 +1,22 @@
+# Node
+node_modules/
+npm-debug.log*
+
+# Capacitor / Android 构建产物
+android/.gradle/
+android/app/build/
+android/build/
+android/capacitor-cordova-android-plugins/build/
+android/app/src/main/assets/public/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# 日志
+*.log
