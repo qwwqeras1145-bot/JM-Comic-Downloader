@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f7f7">
+  <title>JM漫画 v1.2 · 聊天下载</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- 顶部标题栏 -->
+  <div id="statusbar"></div>
+  <header class="chat-header">
+    <div class="chat-header-info">
+      <div class="chat-avatar"><span>JM</span></div>
+      <div>
+        <div class="chat-title">JM漫画下载助手 v1.2</div>
+        <div class="chat-sub" id="chat-sub">在线 · v1.2 · 输入漫画码即可下载</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 消息区 -->
+  <main class="chat-body" id="chatBody">
+    <div class="chat-date">— 现在开始聊天 —</div>
+    <div class="msg-row bot">
+      <div class="msg-avatar bot-avatar">JM</div>
+      <div class="msg-bubble">
+        你好呀！👋 我是 JM 漫画下载助手～<br><br>
+        直接给我一个<b>漫画码/章节码</b>（纯数字），我就能帮你下载！<br><br>
+        📖 <b>示例：</b><br>
+        · 输入 <b>515320</b> → 查询漫画信息<br>
+        · 输入 <b>dl 515320</b> → 下载漫画<br>
+        · 输入 <b>dl 515320 10</b> → 并发 10 下载<br>
+        · 输入 <b>help</b> → 查看全部指令<br>
+        · 输入 <b>diag</b> → 网络诊断<br>
+        <br>
+        <i style="opacity:.6">下载完成后自动保存到手机「JM漫画」文件夹 📂</i>
+      </div>
+    </div>
+  </main>
+
+  <!-- 底部输入栏 -->
+  <footer class="chat-footer">
+    <input type="text" id="input" class="chat-input" placeholder="输入漫画码…" autocomplete="off">
+    <button id="sendBtn" class="chat-send">发送</button>
+  </footer>
+
+  <script src="js/crypto-js.min.js"></script>
+  <script src="js/jmcore.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
