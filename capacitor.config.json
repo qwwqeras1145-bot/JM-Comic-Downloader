@@ -1,0 +1,13 @@
+{
+  "appId": "com.jmchat.app",
+  "appName": "JM漫画",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "CapacitorHttp": {
+      "enabled": true
+    }
+  }
+}
