@@ -120,6 +120,21 @@
     };
   }
 
+  /* ---------- 随机漫画：从全站列表随机翻页挑一本 ---------- */
+  async function fetchRandomComic() {
+    var ts = getTimestamp();
+    var page = Math.floor(Math.random() * 200) + 1;
+    var data = await httpGet(API_BASE + "/search?search_query=&page=" + page, appHeader(ts), "json");
+    if (!data || !data.data) {
+      throw new Error("随机获取失败 | code=" + (data && data.code) + " 响应=" + JSON.stringify(data).slice(0, 200));
+    }
+    var d = aesDecrypt(data.data, ts);
+    var list = (d && d.content) || [];
+    if (!list.length) throw new Error("随机获取失败：列表为空");
+    var pick = list[Math.floor(Math.random() * list.length)];
+    return { id: pick.id, name: pick.name, author: pick.author };
+  }
+
   /* ---------- 图片还原（切片反转拼接，jm_node file_Imagedecode 移植） ---------- */
   function computePieces(jmcode, scrambleId, filename) {
     var power = 0;
@@ -268,9 +283,10 @@
   global.JMCore = {
     fetchComicPrompt: fetchComicPrompt,
     fetchComicAbout: fetchComicAbout,
+    fetchRandomComic: fetchRandomComic,
     downloadComic: downloadComic,
     downloadImage: downloadImage,
     computePieces: computePieces,
-    VERSION: "1.2.0"
+    VERSION: "1.3.0"
   };
 })(window);
