@@ -55,6 +55,10 @@
     if (/^(diag|诊断|测试|test|ping)$/i.test(raw)) {
       return doDiag();
     }
+    /* 随机下载 */
+    if (/^(random|随|随机|rp)$/i.test(raw)) {
+      return doRandom();
+    }
     /* 下载：dl 码 [并发] / 下载 码 */
     m = raw.match(/^(?:dl|down|下载|下)\s*[：: ]?\s*(\d{3,10})(?:\s+(\d{1,2}))?$/i);
     if (m) {
@@ -78,6 +82,7 @@
       "　例：<b>dl 515320</b><br><br>" +
       "⚡ <b>dl 漫画码 并发数</b> → 指定并发下载<br>" +
       "　例：<b>dl 515320 10</b><br><br>" +
+      "🎲 <b>random</b> / <b>随</b> → 全站随机挑一本漫画自动下载<br>" +
       "🩺 <b>diag</b> → 网络诊断（排查连接问题）<br>" +
       "　例：<b>diag</b><br><br>" +
       "ℹ️ 下载完成后图片保存在手机<br>" +
@@ -153,6 +158,28 @@
   }
 
   /* ---------- 下载漫画 ---------- */
+  /* ---------- 随机下载一本 ---------- */
+  async function doRandom() {
+    var b = addMsg("🎲 正在全站随机挑一本漫画…");
+    try {
+      var pick = await JMCore.fetchRandomComic();
+      b.innerHTML = "🎲 随机选中: <b>[" + escapeHtml(pick.id) + "]</b> " + escapeHtml(pick.name) + "<br>正在查询详情…";
+      scrollBottom();
+      var info = await JMCore.fetchComicAbout(pick.id);
+      if (info) {
+        b.innerHTML = "🎲 随机选中: <b>[" + escapeHtml(pick.id) + "]</b> " + escapeHtml(pick.name) +
+          "<br>👤 作者: " + escapeHtml(String(info.author || "未知")) +
+          " | 📄 " + (info.photos || "?") + " 页 | 👀 " + (info.view || "?") +
+          "<br>⬇️ 自动开始下载…";
+        scrollBottom();
+      }
+      await doDownload(pick.id, 5);
+    } catch (e) {
+      b.innerHTML = "❌ 随机失败: " + escapeHtml(String(e && e.message || e));
+      scrollBottom();
+    }
+  }
+
   async function doDownload(code, concurrency) {
     var b = addMsg(
       "⬇️ 开始下载漫画 <b>" + code + "</b>（并发 " + concurrency + "）…" +
