@@ -1,0 +1,1 @@
+[jm_python] 开始下载漫画 515320，并发 3，保存到 C:\Program Files\梦汐Bot启动器\AstrBot\AstrBot\data\plugins\jm_downloader\out\515320
